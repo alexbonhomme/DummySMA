@@ -35,9 +35,9 @@ class ColorAgent(AgentMovable):
     def _computeSatisfaction(self):
         neighbours = self.sma.env.neighboursAgentsOf(self.x, self.y)
 
-        others = 0
+        sameColor = 0
         for agent in neighbours:
             if agent.color != self.color:
-                others += 1
+                sameColor += 1
 
-        return float(others) / 8.0
+        return float(sameColor) / len(neighbours)
