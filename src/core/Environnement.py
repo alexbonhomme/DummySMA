@@ -9,9 +9,10 @@ import random
 
 class Environnement(object):
 
-    def __init__(self, cols, rows):
+    def __init__(self, cols, rows, toric):
         self.rows, self.cols = rows, cols
         self.grid = [[None for _ in xrange(cols)] for _ in xrange(rows)]
+        self.toric = toric
 
     def add(self, x, y, agent):
         if x < 0 or x >= self.rows:
@@ -78,12 +79,21 @@ class Environnement(object):
     def _foreachNeighboursOf(self, x, y, func, *args):
         i, j = x, y
 
-        rmin = i - 1 if i - 1 >= 0 else 0
-        rmax = i + 1 if i + 1 < self.rows else i
-
-        cmin = j - 1 if j - 1 >= 0 else 0
-        cmax = j + 1 if j + 1 < self.cols else j
-
+        if self.toric:
+            rmin = (i - 1) % self.rows
+            rmax = (i + 1) % self.rows
+    
+            cmin = (j - 1) % self.cols
+            cmax = (j + 1) % self.cols
+            
+        else:
+            rmin = i - 1 if i - 1 >= 0 else 0
+            rmax = i + 1 if i + 1 < self.rows else i
+    
+            cmin = j - 1 if j - 1 >= 0 else 0
+            cmax = j + 1 if j + 1 < self.cols else j
+        
+        
         for x in xrange(rmin, rmax + 1):
             for y in xrange(cmin, cmax + 1):
                 if i == x and j == y:
