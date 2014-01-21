@@ -25,7 +25,7 @@ class WatorSMA(SMA):
     '''
     def runOnce(self):
         SMA.runOnce(self)
-        if self.logFile:
+        if hasattr(self, "logFile"):
             stats = "{0},{1},{2}\n".format(self.ticksCounter, self.fishesCounter, self.sharksCounter)
             SMA.log(self, stats)
 
