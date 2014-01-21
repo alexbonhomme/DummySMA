@@ -55,4 +55,4 @@ class SharkAgent(AgentMovable):
             log.debug("I eat a Fish! Miam!")
 
         # else
-        self.randomMove()
+        self.randomMoveInNeighborhood()

@@ -35,8 +35,9 @@ class AgentMovable(AgentBase):
 
     '''
     Move randomly around his place. (Moore neighborhood)
+    The agent have the choice to do not move
     '''
-    def randomMove(self):
+    def randomMoveInNeighborhood(self):
         movements = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 0), (0, 1), (1, -1), (1, 0), (1, 1)]
 
         isMoved = False
