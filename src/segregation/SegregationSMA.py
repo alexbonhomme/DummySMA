@@ -5,7 +5,7 @@ Created on 21 janv. 2014
 '''
 from core.SMA import SMA
 from segregation.ColorAgent import ColorAgent
-
+import logging as log
 
 class SegregationSMA(SMA):
 
@@ -13,6 +13,10 @@ class SegregationSMA(SMA):
         SMA.__init__(self, cols, rows, logFilename = logFilename, toric = toric)
 
         self.satisfactionThreshold = satisfactionThreshold
+
+    def runOnce(self):
+        SMA.runOnce(self)
+        log.debug("%d %d", self.computeGlobalSatisfaction(), self.computeUnsatisfaction())
 
     def initRedAgents(self, nRedAgents):
         self._initColorAgents(nRedAgents, 'light coral')
