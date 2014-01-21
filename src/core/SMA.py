@@ -13,8 +13,7 @@ This class manager the turn to speak between agents
 '''
 class SMA(object):
 
-    def __init__(self, cols, rows, waitingTimeMillis = 200, logFilename = None, toric = True):
-        self.timeMillis = waitingTimeMillis
+    def __init__(self, cols, rows, logFilename = None, toric = True):
         self.agentsList = []
         self.ticksCounter = 0
         if logFilename:

@@ -12,8 +12,8 @@ from particles.agents.WallAgent import WallAgent
 
 class ParticlesSMA(SMA):
 
-    def __init__(self, cols, rows, waitingTimeMillis = 200, logFilename = None):
-        SMA.__init__(self, cols, rows, waitingTimeMillis, logFilename)
+    def __init__(self, cols, rows, logFilename = None):
+        SMA.__init__(self, cols, rows, logFilename)
 
         self.particlesCounter = 0
 
