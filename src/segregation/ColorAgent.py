@@ -25,7 +25,7 @@ class ColorAgent(AgentMovable):
 
         if self.satisfaction < self.satisfactionThreshold:
             x, y = self.sma.env.randomEmptyPosition()
-            if not self.sma.env.moveTo(x, y):
+            if not self.moveTo(x, y):
                 log.warn('Agent stuck! x: %d y: %d', self.x, self.y)
 
     '''
@@ -34,10 +34,12 @@ class ColorAgent(AgentMovable):
     '''
     def _computeSatisfaction(self):
         neighbours = self.sma.env.neighboursAgentsOf(self.x, self.y)
+        if len(neighbours) <= 0:
+            return 1.0
 
-        sameColor = 0
+        same = 0
         for agent in neighbours:
-            if agent.color != self.color:
-                sameColor += 1
+            if agent.color == self.color:
+                same += 1
 
-        return float(sameColor) / len(neighbours)
+        return float(same) / len(neighbours)

@@ -9,16 +9,16 @@ from segregation.ColorAgent import ColorAgent
 
 class SegregationSMA(SMA):
 
-    def __init__(self, cols, rows, satisfactionThreshold, waitingTimeMillis = 100, logFilename = None):
-        SMA.__init__(self, cols, rows, waitingTimeMillis, logFilename)
+    def __init__(self, cols, rows, satisfactionThreshold, toric = False, logFilename = None):
+        SMA.__init__(self, cols, rows, logFilename = logFilename, toric = toric)
 
         self.satisfactionThreshold = satisfactionThreshold
 
     def initRedAgents(self, nRedAgents):
-        self._initColorAgents(nRedAgents, 'red')
+        self._initColorAgents(nRedAgents, 'light coral')
 
     def initBlueAgents(self, nRedAgents):
-        self._initColorAgents(nRedAgents, 'blue')
+        self._initColorAgents(nRedAgents, 'light blue')
 
     def _initColorAgents(self, nColorAgent, color):
         for _ in xrange(0, nColorAgent):
