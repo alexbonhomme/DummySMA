@@ -5,7 +5,6 @@ Created on 21 janv. 2014
 '''
 from core.SMA import SMA
 from segregation.ColorAgent import ColorAgent
-import logging as log
 
 class SegregationSMA(SMA):
 
@@ -14,9 +13,15 @@ class SegregationSMA(SMA):
 
         self.satisfactionThreshold = satisfactionThreshold
 
+        if hasattr(self, "logFile"):
+            self.log("Average global satisfaction, Unsatisfaction\n")
+
     def runOnce(self):
         SMA.runOnce(self)
-        log.debug("%d %d", self.computeGlobalSatisfaction(), self.computeUnsatisfaction())
+
+        if hasattr(self, "logFile"):
+            stats = "{0},{1}\n".format(self.computeGlobalSatisfaction(), self.computeUnsatisfaction())
+            SMA.log(self, stats)
 
     def initRedAgents(self, nRedAgents):
         self._initColorAgents(nRedAgents, 'light coral')
@@ -34,26 +39,26 @@ class SegregationSMA(SMA):
     '''
     def computeGlobalSatisfaction(self):
         satisfations = 0.0
-        
+
         if len(self.agentsList) <= 0:
             raise ValueError("Empty agents list")
-        
+
         for agent in self.agentsList:
             satisfations += agent.satisfaction
-            
+
         return satisfations / len(self.agentsList)
-    
+
     '''
     Return the percent of agents who aren't satisfied
     '''
     def computeUnsatisfaction(self):
-        unsatisfaction = 0
-        
+        unsatisfaction = 0.0
+
         if len(self.agentsList) <= 0:
             raise ValueError("Empty agents list")
-        
+
         for agent in self.agentsList:
             if agent.satisfaction < self.satisfactionThreshold:
                 unsatisfaction += 1
-        
+
         return unsatisfaction / len(self.agentsList)
