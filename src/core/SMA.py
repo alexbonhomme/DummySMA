@@ -18,7 +18,6 @@ class SMA(object):
         self.ticksCounter = 0
         if logFilename:
             self.logFile = open(logFilename, 'w')
-            self.log("Ticks,Fishes,Sharks\n")
 
         self.env = Environnement(cols, rows, toric)
 

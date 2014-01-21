@@ -17,6 +17,9 @@ class WatorSMA(SMA):
         self.fishesCounter = 0
         self.sharksCounter = 0
 
+        if hasattr(self, "logFile"):
+            self.log("Ticks,Fishes,Sharks\n")
+
         # self.fishesFile = open("fishes_age.csv", 'w')
         # self.sharksFile = open("sharks_age.csv", 'w')
 
