@@ -28,5 +28,5 @@ class FishAgent(AgentMovable):
                 log.debug("Baby fish!")
                 return
         else:
-            self.randomMove()
+            self.randomMoveInNeighborhood()
 
