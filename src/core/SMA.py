@@ -13,7 +13,7 @@ This class manager the turn to speak between agents
 '''
 class SMA(object):
 
-    def __init__(self, cols, rows, waitingTimeMillis = 200, logFilename = None):
+    def __init__(self, cols, rows, waitingTimeMillis = 200, logFilename = None, toric = True):
         self.timeMillis = waitingTimeMillis
         self.agentsList = []
         self.ticksCounter = 0
@@ -21,7 +21,7 @@ class SMA(object):
             self.logFile = open(logFilename, 'w')
             self.log("Ticks,Fishes,Sharks\n")
 
-        self.env = Environnement(cols, rows)
+        self.env = Environnement(cols, rows, toric)
 
     '''
     Add an agent and update the grid

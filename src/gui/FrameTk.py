@@ -3,8 +3,10 @@ Created on 17 janv. 2014
 
 @author: Alexandre Bonhomme
 '''
-from Tkinter import Tk, Canvas, NW
 
+from Tkinter import Tk, Canvas, NW
+    
+    
 class FrameTk(object):
 
     def __init__(self, height, width, box_size, title = "Tk", bg = None):
