@@ -49,6 +49,11 @@ if __name__ == '__main__':
                         dest = "cycles",
                         help = "number of cycles",
                         type = int)
+    parser.add_argument("-t",
+                        "--toric",
+                        help = "use a toric environnement",
+                        action = 'store_true',
+                        default = False)
     args = parser.parse_args()
 
     # hack here we consider that "rows" = the x size (e.i. the width)

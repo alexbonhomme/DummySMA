@@ -9,8 +9,8 @@ from segregation.ColorAgent import ColorAgent
 
 class SegregationSMA(SMA):
 
-    def __init__(self, cols, rows, satisfactionThreshold, logFilename = None):
-        SMA.__init__(self, cols, rows, logFilename)
+    def __init__(self, cols, rows, satisfactionThreshold, toric = False, logFilename = None):
+        SMA.__init__(self, cols, rows, logFilename = logFilename, toric = toric)
 
         self.satisfactionThreshold = satisfactionThreshold
 
