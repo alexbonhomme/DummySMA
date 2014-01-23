@@ -11,8 +11,8 @@ import logging as log
 
 class WatorSMA(SMA):
 
-    def __init__(self, cols, rows, logFilename = None):
-        SMA.__init__(self, cols, rows, logFilename)
+    def __init__(self, cols, rows, toric = False, logFilename = None):
+        SMA.__init__(self, cols, rows, logFilename = logFilename, toric = toric)
 
         self.fishesCounter = 0
         self.sharksCounter = 0

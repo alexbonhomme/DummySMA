@@ -61,7 +61,7 @@ if __name__ == '__main__':
     BOX_SIZE = args.grid_box_size
     WIN_WIDTH, WIN_HEIGHT = GRID_ROWS * BOX_SIZE, GRID_COLS * BOX_SIZE
 
-    sma = SegregationSMA(GRID_COLS, GRID_ROWS, args.satisfactionThreshold, logFilename = "segregation.csv")
+    sma = SegregationSMA(GRID_COLS, GRID_ROWS, args.satisfactionThreshold, toric = args.toric, logFilename = "segregation.csv")
     sma.initBlueAgents(args.pop_a)
     sma.initRedAgents(args.pop_b)
 

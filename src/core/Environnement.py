@@ -80,27 +80,28 @@ class Environnement(object):
         i, j = x, y
 
         if self.toric:
-            rmin = (i - 1) % self.rows
-            rmax = (i + 1) % self.rows
-    
-            cmin = (j - 1) % self.cols
-            cmax = (j + 1) % self.cols
-            
+            for x in xrange(i - 1, i + 1):
+                for y in xrange(j - 1, j + 1):
+                    if i == x and j == y:
+                        continue
+
+                    # apply function
+                    func(x % self.rows, y % self.cols, *args)
+
         else:
             rmin = i - 1 if i - 1 >= 0 else 0
             rmax = i + 1 if i + 1 < self.rows else i
-    
+
             cmin = j - 1 if j - 1 >= 0 else 0
             cmax = j + 1 if j + 1 < self.cols else j
-        
-        
-        for x in xrange(rmin, rmax + 1):
-            for y in xrange(cmin, cmax + 1):
-                if i == x and j == y:
-                    continue
 
-                # apply function
-                func(x, y, *args)
+            for x in xrange(rmin, rmax + 1):
+                for y in xrange(cmin, cmax + 1):
+                    if i == x and j == y:
+                        continue
+
+                    # apply function
+                    func(x, y, *args)
 
     def isEmpty(self, x, y):
         return self.grid[x][y] is None

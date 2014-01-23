@@ -61,6 +61,11 @@ if __name__ == '__main__':
                         dest = "output",
                         help = "FILE to write data",
                         metavar = "FILE")
+    parser.add_argument("-t",
+                        "--toric",
+                        help = "use a toric environnement",
+                        action = 'store_true',
+                        default = False)
     args = parser.parse_args()
 
     # hack here we consider that "rows" = the x size (e.i. the width)
@@ -68,7 +73,7 @@ if __name__ == '__main__':
     BOX_SIZE = args.grid_box_size
     WIN_WIDTH, WIN_HEIGHT = GRID_ROWS * BOX_SIZE, GRID_COLS * BOX_SIZE
 
-    sma = WatorSMA(GRID_COLS, GRID_ROWS, logFilename = args.output)
+    sma = WatorSMA(GRID_COLS, GRID_ROWS, toric = args.toric, logFilename = args.output)
     sma.initFishes(args.fishes, args.fishes_breed)
     sma.initSharks(args.sharks, args.sharks_breed, args.sharks_starv)
 
