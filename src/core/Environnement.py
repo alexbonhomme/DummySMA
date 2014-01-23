@@ -6,6 +6,8 @@ Created on 17 janv. 2014
 '''
 import random
 
+import logging as log
+
 
 class Environnement(object):
 
@@ -80,8 +82,8 @@ class Environnement(object):
         i, j = x, y
 
         if self.toric:
-            for x in xrange(i - 1, i + 1):
-                for y in xrange(j - 1, j + 1):
+            for x in xrange(i - 1, i + 1 + 1):
+                for y in xrange(j - 1, j + 1 + 1):
                     if i == x and j == y:
                         continue
 
