@@ -4,9 +4,9 @@ Created on 21 janv. 2014
 @author: Alexandre Bonhomme
 '''
 from core.SMA import SMA
-from segregation.ColorAgent import ColorAgent
+from schelling.ColorAgent import ColorAgent
 
-class SegregationSMA(SMA):
+class SchellingSMA(SMA):
 
     def __init__(self, cols, rows, satisfactionThreshold, toric = False, logFilename = None):
         SMA.__init__(self, cols, rows, logFilename = logFilename, toric = toric)

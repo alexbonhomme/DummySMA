@@ -6,8 +6,8 @@ Created on 20 janv. 2014
 @author: Alexandre Bonhomme
 '''
 import logging as log
-from segregation.SegregationFrame import SegregationFrame
-from segregation.SegregationSMA import SegregationSMA
+from schelling.SchellingFrame import SchellingFrame
+from schelling.SchellingSMA import SchellingSMA
 
 
 log.basicConfig(level = log.INFO)
@@ -61,11 +61,11 @@ if __name__ == '__main__':
     BOX_SIZE = args.grid_box_size
     WIN_WIDTH, WIN_HEIGHT = GRID_ROWS * BOX_SIZE, GRID_COLS * BOX_SIZE
 
-    sma = SegregationSMA(GRID_COLS, GRID_ROWS, args.satisfactionThreshold, toric = args.toric, logFilename = "segregation.csv")
+    sma = SchellingSMA(GRID_COLS, GRID_ROWS, args.satisfactionThreshold, toric = args.toric, logFilename = "schelling.csv")
     sma.initBlueAgents(args.pop_a)
     sma.initRedAgents(args.pop_b)
 
-    frame = SegregationFrame(WIN_HEIGHT, WIN_WIDTH, BOX_SIZE, sma)
+    frame = SchellingFrame(WIN_HEIGHT, WIN_WIDTH, BOX_SIZE, sma)
     if args.cycles:
         frame.repeat(args.cycles, args.waiting_time_millis, sma.runOnce)
     else:

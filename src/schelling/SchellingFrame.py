@@ -5,13 +5,13 @@ Created on 21 janv. 2014
 '''
 from Tkinter import ALL
 from gui.FrameTk import FrameTk
-from segregation.ColorAgent import ColorAgent
+from schelling.ColorAgent import ColorAgent
 
 
-class SegregationFrame(FrameTk):
+class SchellingFrame(FrameTk):
 
     def __init__(self, height, width, box_size, sma):
-        FrameTk.__init__(self, height, width, box_size, title = 'Population segregation', bg = 'black')
+        FrameTk.__init__(self, height, width, box_size, title = 'Schelling model', bg = 'black')
 
         self.sma = sma
 
@@ -23,7 +23,7 @@ class SegregationFrame(FrameTk):
                                      fill = color)
 
     def _draw(self):
-        title = "Population segregation - Tick " + str(self.sma.ticksCounter)
+        title = "Schelling model - Tick " + str(self.sma.ticksCounter)
         self.main.wm_title(title)
 
         self.canvas.delete(ALL)
