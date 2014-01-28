@@ -5,8 +5,8 @@ Created on 20 janv. 2014
 
 @author: Alexandre Bonhomme
 '''
-from particles.ParticlesFrame import PacmanFrame
-from particles.ParticlesSMA import PacmanSMA
+from particles.ParticlesFrame import ExplorerFrame
+from particles.ParticlesSMA import ParticlesSMA
 import logging as log
 
 
@@ -46,11 +46,11 @@ if __name__ == '__main__':
     BOX_SIZE = args.grid_box_size
     WIN_WIDTH, WIN_HEIGHT = GRID_ROWS * BOX_SIZE, GRID_COLS * BOX_SIZE
 
-    sma = PacmanSMA(GRID_COLS, GRID_ROWS)
+    sma = ParticlesSMA(GRID_COLS, GRID_ROWS)
     sma.initWalls()
     sma.initParticles(args.particles)
 
-    frame = PacmanFrame(WIN_HEIGHT, WIN_WIDTH, BOX_SIZE, sma)
+    frame = ExplorerFrame(WIN_HEIGHT, WIN_WIDTH, BOX_SIZE, sma)
     if args.cycles:
         frame.repeat(args.cycles, args.waiting_time_millis, sma.runOnce)
     else:
