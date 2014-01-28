@@ -1,5 +1,5 @@
 '''
-Created on 20 janv. 2014
+Created on 28 janv. 2014
 
 @author: Alexandre Bonhomme
 '''

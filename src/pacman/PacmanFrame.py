@@ -1,25 +1,52 @@
 '''
-Created on 19 janv. 2014
+Created on 28 janv. 2014
 
 @author: Alexandre Bonhomme
 '''
 from Tkinter import ALL
 
+from PIL import ImageTk, Image
+
 from gui.FrameTk import FrameTk
 from pacman.agents.PacmanAgent import PacmanAgent
 from particles.agents.WallAgent import WallAgent
-
 
 class PacmanFrame(FrameTk):
 
     def __init__(self, height, width, box_size, sma):
         FrameTk.__init__(self, height, width, box_size, title = 'Pacman', bg = 'black')
 
+        image = Image.open("../resources/pacman.png")
+        image = image.resize((self.BOX_SIZE, self.BOX_SIZE), Image.ANTIALIAS)
+        self.IMG_PACMAN = ImageTk.PhotoImage(image)
+
+        self.IMG_GHOSTS = []
+        image = Image.open("../resources/ghost_1.png")
+        image = image.resize((self.BOX_SIZE, self.BOX_SIZE), Image.ANTIALIAS)
+        self.IMG_GHOSTS.append(ImageTk.PhotoImage(image))
+
+        image = Image.open("../resources/ghost_2.png")
+        image = image.resize((self.BOX_SIZE, self.BOX_SIZE), Image.ANTIALIAS)
+        self.IMG_GHOSTS.append(ImageTk.PhotoImage(image))
+
+        image = Image.open("../resources/ghost_3.png")
+        image = image.resize((self.BOX_SIZE, self.BOX_SIZE), Image.ANTIALIAS)
+        self.IMG_GHOSTS.append(ImageTk.PhotoImage(image))
+
+        image = Image.open("../resources/ghost_4.png")
+        image = image.resize((self.BOX_SIZE, self.BOX_SIZE), Image.ANTIALIAS)
+        self.IMG_GHOSTS.append(ImageTk.PhotoImage(image))
+
         self.sma = sma
 
     def drawPacman(self, x, y):
-        # TODO
-        pass
+        self.drawTkImage(x, y, self.IMG_PACMAN)
+
+    def drawGhost(self, x, y, ident):
+        if ident < 0 or ident >= 4:
+            raise ValueError("ident should be >= 0 and < 4")
+
+        self.drawTkImage(x, y, self.IMG_GHOSTS[ident])
 
     def drawWall(self, x, y, color = 'purple'):
         self.canvas.create_rectangle(x, \
@@ -40,7 +67,7 @@ class PacmanFrame(FrameTk):
             for y in xrange(0, cols):
                 element = grid[x][y]
                 if isinstance(element, PacmanAgent):
-                    self.drawPacman(x * self.BOX_SIZE, y * self.BOX_SIZE)
+                    self.drawPacman(x * self.BOX_SIZE, y * self.BOX_SIZE, element.id)
                 elif isinstance(element, WallAgent):
                     self.drawWall(x * self.BOX_SIZE, y * self.BOX_SIZE)
 
