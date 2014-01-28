@@ -1,12 +1,12 @@
 #! /usr/bin/env python2
 # -*- coding: utf-8 -*-
 '''
-Created on 20 janv. 2014
+Created on 28 janv. 2014
 
 @author: Alexandre Bonhomme
 '''
-from particles.ParticlesFrame import ExplorerFrame
-from particles.ParticlesSMA import ParticlesSMA
+from explorer.ExplorerSMA import ExplorerSMA
+from explorer.ExplorerFrame import ExplorerFrame
 import logging as log
 
 
@@ -28,12 +28,11 @@ if __name__ == '__main__':
     parser.add_argument(dest = "waiting_time_millis",
                         help = "time in milliseconds between each cycle",
                         type = int)
-    parser.add_argument("-p",
-                        "--particles",
-                        dest = "particles",
-                        help = "initial number of particles",
-                        type = int,
-                        default = 100)
+    parser.add_argument("-n",
+                        "--nExplorers",
+                        dest = "explorers",
+                        help = "number of explorers",
+                        type = int)
     parser.add_argument("-c",
                         "--cycles",
                         dest = "cycles",
@@ -46,9 +45,9 @@ if __name__ == '__main__':
     BOX_SIZE = args.grid_box_size
     WIN_WIDTH, WIN_HEIGHT = GRID_ROWS * BOX_SIZE, GRID_COLS * BOX_SIZE
 
-    sma = ParticlesSMA(GRID_COLS, GRID_ROWS)
+    sma = ExplorerSMA(GRID_COLS, GRID_ROWS)
     sma.initWalls()
-    sma.initParticles(args.particles)
+    sma.initExplorers(args.explorers)
 
     frame = ExplorerFrame(WIN_HEIGHT, WIN_WIDTH, BOX_SIZE, sma)
     if args.cycles:

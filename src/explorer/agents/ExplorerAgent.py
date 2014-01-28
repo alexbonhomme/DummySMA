@@ -6,10 +6,13 @@ Created on 28 janv. 2014
 from core.AgentMovable import AgentMovable
 
 
-class PacmanAgent(AgentMovable):
+class ExplorerAgent(AgentMovable):
 
     def __init__(self, x, y, sma):
         AgentMovable.__init__(self, x, y, sma)
 
+        self.color
+        self.dijkstraGrid = [[None for _ in xrange(self.env.cols)] for _ in xrange(self.env.rows)]
+
     def action(self):
-        self.randomMoveInNeighborhood()
+        pass

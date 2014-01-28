@@ -9,7 +9,7 @@ from PIL import ImageTk, Image
 
 from gui.FrameTk import FrameTk
 from pacman.agents.PacmanAgent import PacmanAgent
-from particles.agents.WallAgent import WallAgent
+from pacman.agents.WallAgent import WallAgent
 
 class PacmanFrame(FrameTk):
 

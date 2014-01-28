@@ -5,7 +5,7 @@ Created on 28 janv. 2014
 '''
 
 from core.SMA import SMA
-from particles.agents.WallAgent import WallAgent
+from pacman.agents.WallAgent import WallAgent
 from pacman.agents.PacmanAgent import PacmanAgent
 
 class PacmanSMA(SMA):
