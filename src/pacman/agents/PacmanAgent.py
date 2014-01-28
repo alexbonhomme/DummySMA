@@ -12,4 +12,4 @@ class PacmanAgent(AgentMovable):
         AgentMovable.__init__(self, x, y, sma)
 
     def action(self):
-        pass
+        self.randomMoveInNeighborhood()
