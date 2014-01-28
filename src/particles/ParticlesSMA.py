@@ -10,7 +10,7 @@ from particles.agents.ParticleAgent import ParticleAgent
 from particles.agents.WallAgent import WallAgent
 
 
-class ParticlesSMA(SMA):
+class PacmanSMA(SMA):
 
     def __init__(self, cols, rows, logFilename = None):
         SMA.__init__(self, cols, rows, logFilename)
