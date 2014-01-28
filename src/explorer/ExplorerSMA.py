@@ -5,21 +5,13 @@ Created on 28 janv. 2014
 '''
 
 from core.SMA import SMA
-from particles.agents.WallAgent import WallAgent
-from pacman.agents.PacmanAgent import PacmanAgent
+from explorer.agents.WallAgent import WallAgent
 
-class PacmanSMA(SMA):
+class ExplorerSMA(SMA):
 
-    def __init__(self, cols, rows, logFilename=None):
+    def __init__(self, cols, rows, logFilename = None):
         SMA.__init__(self, cols, rows, logFilename)
-        self.computeDijkstraGrid()
-    '''
-    Place walls into the grid
-    '''
-        
-    def computeDijkstraGrid(self):
-        self.dijkstraGrid = [[None for _ in xrange(self.env.cols)] for _ in xrange(self.env.rows)]
-       
+
     def initWalls(self):
         # TODO
         for x in xrange(self.env.rows):
@@ -30,7 +22,5 @@ class PacmanSMA(SMA):
             self.addAgent(WallAgent(0, y, self))
             self.addAgent(WallAgent(self.env.rows - 1, y, self))
 
-    def initPacman(self):
-        x, y = self.env.randomEmptyPosition()
-        self.addAgent(PacmanAgent(x, y, self))
-    
+    def initExplorers(self, nExplorers):
+        pass
