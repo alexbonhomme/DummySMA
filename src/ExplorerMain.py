@@ -10,7 +10,7 @@ from explorer.ExplorerFrame import ExplorerFrame
 import logging as log
 
 
-log.basicConfig(level = log.INFO)
+log.basicConfig(level = log.DEBUG)
 
 if __name__ == '__main__':
     import argparse
@@ -46,7 +46,7 @@ if __name__ == '__main__':
     WIN_WIDTH, WIN_HEIGHT = GRID_ROWS * BOX_SIZE, GRID_COLS * BOX_SIZE
 
     sma = ExplorerSMA(GRID_COLS, GRID_ROWS)
-    sma.initWalls()
+    sma.initWalls(3, 5, (GRID_COLS * GRID_ROWS) / 30)
     sma.initExplorers(args.explorers)
 
     frame = ExplorerFrame(WIN_HEIGHT, WIN_WIDTH, BOX_SIZE, sma)

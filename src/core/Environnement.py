@@ -72,7 +72,7 @@ class Environnement(object):
         return neighbours
 
     '''
-    Apply the given function for each neighbours
+    Apply the given function for each neighbours (Moore)
     The given function has to take at least 2 arguments : x and y
     '''
     def _foreachNeighboursOf(self, x, y, func, *args):
