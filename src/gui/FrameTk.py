@@ -5,8 +5,8 @@ Created on 17 janv. 2014
 '''
 
 from Tkinter import Tk, Canvas, NW
-    
-    
+
+
 class FrameTk(object):
 
     def __init__(self, height, width, box_size, title = "Tk", bg = None):
@@ -43,3 +43,6 @@ class FrameTk(object):
 
     def drawTkImage(self, x, y, tkimage):
         self.canvas.create_image(x, y, anchor = NW, image = tkimage)
+
+    def drawText(self, x, y, text):
+        self.canvas.create_text(x, y, anchor = NW, text = text, width = self.BOX_SIZE)
