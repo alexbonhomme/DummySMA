@@ -4,10 +4,13 @@ Created on 28 janv. 2014
 @author: Alexandre Bonhomme
 '''
 
+import random
+
 from core.SMA import SMA
 from core.agents.WallAgent import WallAgent
-import random
+from explorer.agents.ExplorerAgent import ExplorerAgent
 import logging as log
+
 
 class ExplorerSMA(SMA):
 
@@ -68,4 +71,6 @@ class ExplorerSMA(SMA):
 
 
     def initExplorers(self, nExplorers):
-        pass
+        for _ in xrange(nExplorers):
+            x, y = self.env.randomEmptyPosition()
+            self.addAgent(ExplorerAgent(x, y, self))

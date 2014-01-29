@@ -32,6 +32,7 @@ if __name__ == '__main__':
                         "--nExplorers",
                         dest = "explorers",
                         help = "number of explorers",
+                        default = 1,
                         type = int)
     parser.add_argument("-c",
                         "--cycles",
