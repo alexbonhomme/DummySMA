@@ -7,7 +7,7 @@ from Tkinter import ALL
 
 from gui.FrameTk import FrameTk
 from particles.agents.ParticleAgent import ParticleAgent
-from particles.agents.WallAgent import WallAgent
+from core.agents.WallAgent import WallAgent
 
 
 class ExplorerFrame(FrameTk):

@@ -4,7 +4,7 @@ Created on 19 janv. 2014
 @author: Alexandre Bonhomme
 '''
 import logging as log
-from core.AgentMovable import AgentMovable
+from core.agents.AgentMovable import AgentMovable
 
 
 class FishAgent(AgentMovable):

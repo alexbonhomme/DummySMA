@@ -3,7 +3,7 @@ Created on 21 janv. 2014
 
 @author: Alexandre Bonhomme
 '''
-from core.AgentMovable import AgentMovable
+from core.agents.AgentMovable import AgentMovable
 import logging as log
 
 

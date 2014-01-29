@@ -5,7 +5,7 @@ Created on 19 janv. 2014
 '''
 import random
 
-from core.AgentMovable import AgentMovable
+from core.agents.AgentMovable import AgentMovable
 import logging as log
 from wator.agents.FishAgent import FishAgent
 

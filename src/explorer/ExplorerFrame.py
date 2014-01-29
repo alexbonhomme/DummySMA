@@ -7,7 +7,7 @@ from Tkinter import ALL
 
 from gui.FrameTk import FrameTk
 from explorer.agents.ExplorerAgent import ExplorerAgent
-from explorer.agents.WallAgent import WallAgent
+from core.agents.WallAgent import WallAgent
 
 class ExplorerFrame(FrameTk):
 

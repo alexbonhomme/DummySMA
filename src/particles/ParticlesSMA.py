@@ -6,8 +6,8 @@ Created on 20 janv. 2014
 import random
 
 from core.SMA import SMA
+from core.agents.WallAgent import WallAgent
 from particles.agents.ParticleAgent import ParticleAgent
-from particles.agents.WallAgent import WallAgent
 
 
 class ParticlesSMA(SMA):

@@ -3,7 +3,7 @@ Created on 20 janv. 2014
 
 @author: Alexandre Bonhomme
 '''
-from core.AgentBase import AgentBase
+from core.agents import AgentBase.AgentBase
 
 class WallAgent(AgentBase):
 

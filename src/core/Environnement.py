@@ -6,9 +6,6 @@ Created on 17 janv. 2014
 '''
 import random
 
-import logging as log
-
-
 class Environnement(object):
 
     def __init__(self, cols, rows, toric):

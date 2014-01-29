@@ -3,8 +3,8 @@ Created on 20 janv. 2014
 
 @author: Alexandre Bonhomme
 '''
-from core.AgentMovable import AgentMovable
-from particles.agents.WallAgent import WallAgent
+from core.agents.AgentMovable import AgentMovable
+from core.agents.WallAgent import WallAgent
 import logging as log
 
 

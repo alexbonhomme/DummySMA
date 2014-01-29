@@ -5,7 +5,7 @@ Created on 28 janv. 2014
 '''
 
 from core.SMA import SMA
-from explorer.agents.WallAgent import WallAgent
+from core.agents.WallAgent import WallAgent
 
 class ExplorerSMA(SMA):
 

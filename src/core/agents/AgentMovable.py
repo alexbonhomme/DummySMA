@@ -5,7 +5,7 @@ Created on 20 janv. 2014
 '''
 import random
 
-from core.AgentBase import AgentBase
+from core.agents.AgentBase import AgentBase
 
 '''
 A movable agent. This kind of agent can move on the Environnement grid
