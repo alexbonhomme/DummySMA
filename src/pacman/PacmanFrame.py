@@ -10,6 +10,7 @@ from PIL import ImageTk, Image
 from gui.FrameTk import FrameTk
 from pacman.agents.PacmanAgent import PacmanAgent
 from core.agents.WallAgent import WallAgent
+from pacman.agents import GhostAgent
 
 class PacmanFrame(FrameTk):
 
@@ -66,9 +67,16 @@ class PacmanFrame(FrameTk):
         for x in xrange(0, rows):
             for y in xrange(0, cols):
                 element = grid[x][y]
-                if isinstance(element, PacmanAgent):
-                    self.drawPacman(x * self.BOX_SIZE, y * self.BOX_SIZE, element.id)
-                elif isinstance(element, WallAgent):
+                if isinstance(element, WallAgent):
                     self.drawWall(x * self.BOX_SIZE, y * self.BOX_SIZE)
+
+                elif isinstance(element, GhostAgent):
+                    self.drawGhost(x * self.BOX_SIZE, y * self.BOX_SIZE, element.ident)
+
+                elif isinstance(element, PacmanAgent):
+                    self.drawPacman(x * self.BOX_SIZE, y * self.BOX_SIZE)
+
+                else:
+                    pass # TODO Draw Dijkstra
 
         self.canvas.update_idletasks()
