@@ -34,3 +34,25 @@ class AgentDijkstra(AgentBase):
         for position in listNeighbours:
             positionChild = self._fillNeighbours(position[0], position[1], position[2])
             listNeighbours.extend(positionChild)
+
+    '''
+    Fill the empty neighbours of x,y with value param
+    Return list of position of neighbours which has change
+    '''
+    def _fillNeighbours(self, x, y, value):
+        i, j = x, y
+        neighboursChange = []
+
+        rmin = i - 1 if i - 1 >= 0 else 0
+        rmax = i + 1 if i + 1 < self.sma.env.rows else i
+
+        cmin = j - 1 if j - 1 >= 0 else 0
+        cmax = j + 1 if j + 1 < self.sma.env.cols else j
+
+        for x in xrange(rmin, rmax + 1):
+            for y in xrange(cmin, cmax + 1):
+                if self.dijkstraGrid[x][y] == None:
+                    self.dijkstraGrid[x][y] = value
+                    neighboursChange.append((x, y, value + 1))
+
+        return neighboursChange
