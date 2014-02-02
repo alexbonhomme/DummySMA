@@ -14,17 +14,17 @@ class PacmanSMA(SMA):
 
     def __init__(self, cols, rows, logFilename = None):
         SMA.__init__(self, cols, rows, logFilename)
-        self._computeDijkstraGridInit()
+        self._initDijkstraGrid()
     '''
     Place walls into the grid
     '''
 
-    def _computeDijkstraGridInit(self):
+    def _initDijkstraGrid(self):
         self.dijkstraGrid = [[None for _ in xrange(self.env.cols)] for _ in xrange(self.env.rows)]
 
 
     def computeDijkstraGrid(self, x, y):
-        self._computeDijkstraGridInit()
+        self._initDijkstraGrid()
         self.dijkstraGrid[x][y] = 0
         listNeighbours = self._fillNeighbours(x, y, 1)
 
