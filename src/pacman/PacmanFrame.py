@@ -78,6 +78,6 @@ class PacmanFrame(FrameTk):
                     self.drawPacman(x * self.BOX_SIZE, y * self.BOX_SIZE)
 
                 else:
-                    pass # TODO Draw Dijkstra
+                    self.drawText(x * self.BOX_SIZE, y * self.BOX_SIZE, self.sma.dijkstraGrid[x][y])
 
         self.canvas.update_idletasks()

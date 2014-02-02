@@ -45,4 +45,4 @@ class FrameTk(object):
         self.canvas.create_image(x, y, anchor = NW, image = tkimage)
 
     def drawText(self, x, y, text):
-        self.canvas.create_text(x, y, anchor = NW, text = text, width = self.BOX_SIZE)
+        self.canvas.create_text(x, y, anchor = NW, fill = 'white', text = text)

@@ -41,10 +41,10 @@ class PacmanSMA(SMA):
         neighboursChange = []
 
         rmin = i - 1 if i - 1 >= 0 else 0
-        rmax = i + 1 if i + 1 < self.rows else i
+        rmax = i + 1 if i + 1 < self.env.rows else i
 
         cmin = j - 1 if j - 1 >= 0 else 0
-        cmax = j + 1 if j + 1 < self.cols else j
+        cmax = j + 1 if j + 1 < self.env.cols else j
 
         for x in xrange(rmin, rmax + 1):
             for y in xrange(cmin, cmax + 1):
