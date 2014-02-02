@@ -6,7 +6,7 @@ Created on 20 janv. 2014
 import random
 
 from core.SMA import SMA
-from core.agents.WallAgent import WallAgent
+from core.agents.AgentWall import AgentWall
 from particles.agents.ParticleAgent import ParticleAgent
 
 
@@ -23,12 +23,12 @@ class ParticlesSMA(SMA):
     '''
     def initWalls(self):
         for x in xrange(self.env.rows):
-            self.addAgent(WallAgent(x, 0, self))
-            self.addAgent(WallAgent(x, self.env.cols - 1, self))
+            self.addAgent(AgentWall(x, 0, self))
+            self.addAgent(AgentWall(x, self.env.cols - 1, self))
 
         for y in xrange(self.env.cols):
-            self.addAgent(WallAgent(0, y, self))
-            self.addAgent(WallAgent(self.env.rows - 1, y, self))
+            self.addAgent(AgentWall(0, y, self))
+            self.addAgent(AgentWall(self.env.rows - 1, y, self))
 
     def initParticles(self, nParticles):
         COLORS = ["light blue", "light coral", "light cyan", "light goldenrod",

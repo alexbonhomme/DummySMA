@@ -5,7 +5,7 @@ Created on 28 janv. 2014
 '''
 
 from core.SMA import SMA
-from core.agents.WallAgent import WallAgent
+from core.agents.AgentWall import AgentWall
 from pacman.agents.GhostAgent import GhostAgent
 from pacman.agents.PacmanAgent import PacmanAgent
 
@@ -14,17 +14,17 @@ class PacmanSMA(SMA):
 
     def __init__(self, cols, rows, logFilename = None):
         SMA.__init__(self, cols, rows, logFilename)
-        self._computeDijkstraGridInit()
+        self._initDijkstraGrid()
     '''
     Place walls into the grid
     '''
 
-    def _computeDijkstraGridInit(self):
+    def _initDijkstraGrid(self):
         self.dijkstraGrid = [[None for _ in xrange(self.env.cols)] for _ in xrange(self.env.rows)]
 
 
     def computeDijkstraGrid(self, x, y):
-        self._computeDijkstraGridInit()
+        self._initDijkstraGrid()
         self.dijkstraGrid[x][y] = 0
         listNeighbours = self._fillNeighbours(x, y, 1)
 
@@ -58,12 +58,12 @@ class PacmanSMA(SMA):
     def initWalls(self):
         # TODO
         for x in xrange(self.env.rows):
-            self.addAgent(WallAgent(x, 0, self))
-            self.addAgent(WallAgent(x, self.env.cols - 1, self))
+            self.addAgent(AgentWall(x, 0, self))
+            self.addAgent(AgentWall(x, self.env.cols - 1, self))
 
         for y in xrange(self.env.cols):
-            self.addAgent(WallAgent(0, y, self))
-            self.addAgent(WallAgent(self.env.rows - 1, y, self))
+            self.addAgent(AgentWall(0, y, self))
+            self.addAgent(AgentWall(self.env.rows - 1, y, self))
 
     def initPacman(self):
         x, y = self.env.randomEmptyPosition()

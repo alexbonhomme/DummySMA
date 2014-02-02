@@ -7,7 +7,7 @@ Created on 28 janv. 2014
 import random
 
 from core.SMA import SMA
-from core.agents.WallAgent import WallAgent
+from core.agents.AgentWall import AgentWall
 from explorer.agents.ExplorerAgent import ExplorerAgent
 import logging as log
 
@@ -23,13 +23,13 @@ class ExplorerSMA(SMA):
     def initWalls(self, minWallSize, maxWallSize, nWalls):
         # Horizontal walls
         for x in xrange(self.env.rows):
-            self.addAgent(WallAgent(x, 0, self))
-            self.addAgent(WallAgent(x, self.env.cols - 1, self))
+            self.addAgent(AgentWall(x, 0, self))
+            self.addAgent(AgentWall(x, self.env.cols - 1, self))
 
         # Vertical walls
         for y in xrange(self.env.cols):
-            self.addAgent(WallAgent(0, y, self))
-            self.addAgent(WallAgent(self.env.rows - 1, y, self))
+            self.addAgent(AgentWall(0, y, self))
+            self.addAgent(AgentWall(self.env.rows - 1, y, self))
 
         '''
         Put some random shapes
@@ -37,7 +37,7 @@ class ExplorerSMA(SMA):
         for _ in xrange(nWalls):
             # take a random position
             x, y = self.env.randomEmptyPosition()
-            self.addAgent(WallAgent(x, y, self))
+            self.addAgent(AgentWall(x, y, self))
 
             # random size
             size = random.randint(minWallSize, maxWallSize)
@@ -49,7 +49,7 @@ class ExplorerSMA(SMA):
                     continue
 
                 x, y = random.choice(n)
-                self.addAgent(WallAgent(x, y, self))
+                self.addAgent(AgentWall(x, y, self))
 
 
     '''
