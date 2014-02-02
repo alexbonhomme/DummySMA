@@ -7,10 +7,11 @@ from Tkinter import ALL
 
 from PIL import ImageTk, Image
 
-from gui.FrameTk import FrameTk
-from pacman.agents.PacmanAgent import PacmanAgent
 from core.agents.WallAgent import WallAgent
-from pacman.agents import GhostAgent
+from gui.FrameTk import FrameTk
+from pacman.agents.GhostAgent import GhostAgent
+from pacman.agents.PacmanAgent import PacmanAgent
+
 
 class PacmanFrame(FrameTk):
 
@@ -71,7 +72,7 @@ class PacmanFrame(FrameTk):
                     self.drawWall(x * self.BOX_SIZE, y * self.BOX_SIZE)
 
                 elif isinstance(element, GhostAgent):
-                    self.drawGhost(x * self.BOX_SIZE, y * self.BOX_SIZE, element.ident)
+                    self.drawGhost(x * self.BOX_SIZE, y * self.BOX_SIZE, element.id)
 
                 elif isinstance(element, PacmanAgent):
                     self.drawPacman(x * self.BOX_SIZE, y * self.BOX_SIZE)
