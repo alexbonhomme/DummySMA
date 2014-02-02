@@ -7,7 +7,7 @@ from Tkinter import ALL
 
 from gui.FrameTk import FrameTk
 from particles.agents.ParticleAgent import ParticleAgent
-from core.agents.WallAgent import WallAgent
+from core.agents.AgentWall import AgentWall
 
 
 class ExplorerFrame(FrameTk):
@@ -46,7 +46,7 @@ class ExplorerFrame(FrameTk):
                 element = grid[x][y]
                 if isinstance(element, ParticleAgent):
                     self.drawParticle(x * self.BOX_SIZE, y * self.BOX_SIZE, element.color)
-                elif isinstance(element, WallAgent):
+                elif isinstance(element, AgentWall):
                     self.drawWall(x * self.BOX_SIZE, y * self.BOX_SIZE)
 
         self.canvas.update_idletasks()

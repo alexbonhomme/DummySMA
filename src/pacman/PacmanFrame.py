@@ -7,7 +7,7 @@ from Tkinter import ALL
 
 from PIL import ImageTk, Image
 
-from core.agents.WallAgent import WallAgent
+from core.agents.AgentWall import AgentWall
 from gui.FrameTk import FrameTk
 from pacman.agents.GhostAgent import GhostAgent
 from pacman.agents.PacmanAgent import PacmanAgent
@@ -68,7 +68,7 @@ class PacmanFrame(FrameTk):
         for x in xrange(0, rows):
             for y in xrange(0, cols):
                 element = grid[x][y]
-                if isinstance(element, WallAgent):
+                if isinstance(element, AgentWall):
                     self.drawWall(x * self.BOX_SIZE, y * self.BOX_SIZE)
 
                 elif isinstance(element, GhostAgent):

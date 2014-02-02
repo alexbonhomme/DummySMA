@@ -5,7 +5,7 @@ Created on 20 janv. 2014
 '''
 from core.agents.AgentBase import AgentBase
 
-class WallAgent(AgentBase):
+class AgentWall(AgentBase):
 
     def __init__(self, x, y, sma):
         AgentBase.__init__(self, x, y, sma)

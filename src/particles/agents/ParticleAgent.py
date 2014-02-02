@@ -4,7 +4,7 @@ Created on 20 janv. 2014
 @author: Alexandre Bonhomme
 '''
 from core.agents.AgentMovable import AgentMovable
-from core.agents.WallAgent import WallAgent
+from core.agents.AgentWall import AgentWall
 import logging as log
 
 
@@ -28,7 +28,7 @@ class ParticleAgent(AgentMovable):
 
     def _reboundOn(self, x, y):
         agent = self.sma.env.get(x, y)
-        if isinstance(agent, WallAgent):
+        if isinstance(agent, AgentWall):
             wall = agent
 
             # vertical walls
