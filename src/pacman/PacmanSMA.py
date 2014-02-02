@@ -6,7 +6,9 @@ Created on 28 janv. 2014
 
 from core.SMA import SMA
 from core.agents.WallAgent import WallAgent
+from pacman.agents.GhostAgent import GhostAgent
 from pacman.agents.PacmanAgent import PacmanAgent
+
 
 class PacmanSMA(SMA):
 
@@ -67,3 +69,7 @@ class PacmanSMA(SMA):
         x, y = self.env.randomEmptyPosition()
         self.addAgent(PacmanAgent(x, y, self))
 
+    def initGhosts(self):
+        for i in xrange(4):
+            x, y = self.env.randomEmptyPosition()
+            self.addAgent(GhostAgent(x, y, self, i))
