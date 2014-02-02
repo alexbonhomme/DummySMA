@@ -69,7 +69,9 @@ class ExplorerSMA(SMA):
 
         return neighbours
 
-
+    '''
+    Place some ExplorerAgent in the Env
+    '''
     def initExplorers(self, nExplorers):
         for _ in xrange(nExplorers):
             x, y = self.env.randomEmptyPosition()
