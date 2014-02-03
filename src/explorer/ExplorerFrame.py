@@ -9,6 +9,7 @@ from gui.FrameTk import FrameTk
 from explorer.agents.ExplorerAgent import ExplorerAgent
 from core.agents.AgentWall import AgentWall
 import logging as log
+from explorer.agents.BuilderAgent import BuilderAgent
 
 class ExplorerFrame(FrameTk):
 
@@ -57,5 +58,8 @@ class ExplorerFrame(FrameTk):
 
                 elif isinstance(element, AgentWall):
                     self.drawWall(x * self.BOX_SIZE, y * self.BOX_SIZE)
+
+                elif isinstance(element, BuilderAgent):
+                    self.drawExplorer(x * self.BOX_SIZE, y * self.BOX_SIZE, 'white')
 
         self.canvas.update_idletasks()
