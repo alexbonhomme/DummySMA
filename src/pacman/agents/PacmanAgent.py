@@ -4,7 +4,7 @@ Created on 28 janv. 2014
 @author: Alexandre Bonhomme
 '''
 from core.agents.AgentMovable import AgentMovable
-
+import logging as log
 
 class PacmanAgent(AgentMovable):
 
@@ -12,5 +12,5 @@ class PacmanAgent(AgentMovable):
         AgentMovable.__init__(self, x, y, sma)
 
     def action(self):
-        self.randomMoveInNeighborhood()
+        self.randomMoveInNeighborhood()                
         self.sma.computeDijkstraGrid(self.x, self.y)
