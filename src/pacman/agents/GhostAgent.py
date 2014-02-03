@@ -22,8 +22,9 @@ class GhostAgent(AgentMovable):
         
         position = self.bestMove()
         if not position:
-            log.warn('Phantom stuck! x: %d y: %d', self.x, self.y)
-            
+            log.warn('Phantom stuck! or ever on the best place x: %d y: %d', self.x, self.y)
+            return
+        
         x, y = position
         self.moveTo(x, y)
     
@@ -48,11 +49,17 @@ class GhostAgent(AgentMovable):
             neighboursSMA.append([self.sma.dijkstraGrid[x][y], x, y])
         
         neighboursSMA.sort()
+        
+        '''
+        Verify if the phantom is ever on the best value
+        '''
+        if neighboursSMA[0][0] >= self.sma.dijkstraGrid[self.x][self.y]:
+            return
+        
         '''
         Random : only the three first elements of neighboursSMA may have the smallest value
         '''
         neighboursResult = [neighboursSMA[0]]
-        print("test", neighboursSMA)
         for x in range(1,3):
             print(x)
             if x >= len(neighboursSMA):
@@ -63,7 +70,6 @@ class GhostAgent(AgentMovable):
         
         position = random.choice(neighboursResult)
         x, y = position[1:3]
-        print(x, y)
         
         return (x, y)
             
