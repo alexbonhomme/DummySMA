@@ -16,5 +16,9 @@ class ExplorerAgent(AgentMovable, AgentDijkstra):
         self.color = color
 
     def action(self):
+        # TODO
+        # random move
+        self.randomMoveInNeighborhood()
+
         # compute the Dijkstra's grid
         self.computeDijkstraGrid()

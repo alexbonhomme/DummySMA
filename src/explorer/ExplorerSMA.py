@@ -8,6 +8,7 @@ import random
 
 from core.SMA import SMA
 from core.agents.AgentWall import AgentWall
+from explorer.agents.BuilderAgent import BuilderAgent
 from explorer.agents.ExplorerAgent import ExplorerAgent
 import logging as log
 
@@ -18,7 +19,25 @@ class ExplorerSMA(SMA):
         SMA.__init__(self, cols, rows, logFilename)
 
     '''
-        Places some obstacles 
+    Init builder agents to mine the maze and filled the grid with walls
+    and the number of step they has to perform
+    '''
+    def initBuilder(self, nBuilder, nSteps):
+        self.env.grid = [[AgentWall(self.env.rows, self.env.cols, self)
+                            for _ in xrange(self.env.cols)]
+                                for _ in xrange(self.env.rows)]
+
+        for _ in xrange(nBuilder):
+            x, y = random.randrange(self.env.rows), random.randrange(self.env.cols)
+
+            # remove wall
+            self.env.remove(x, y)
+
+            # adding agent
+            self.addAgent(BuilderAgent(x, y, self, nSteps))
+
+    '''
+    Places some obstacles 
     '''
     def initWalls(self, minWallSize, maxWallSize, nWalls):
         # Horizontal walls

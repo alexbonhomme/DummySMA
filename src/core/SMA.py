@@ -36,11 +36,23 @@ class SMA(object):
     '''
     def removeAgent(self, agent):
         a = self.env.remove(agent.x, agent.y)
-        if a != None:
+        if a is not None:
             self.agentsList.remove(a)
             return True
 
         return False
+
+    '''
+    Remove all agents from the SMA and the list of all previous agents
+    '''
+    def removeAllAgent(self):
+        agents = self.agentsList
+        for a in self.agentsList:
+            self.env.remove(a.x, a.y)
+
+        self.agentsList = []
+
+        return agents
 
     '''
     Call the action() function over each agents
@@ -50,6 +62,9 @@ class SMA(object):
         map(lambda agent: agent.action(), self.agentsList)
         self.ticksCounter += 1
 
+    '''
+    Logging functions
+    '''
     def log(self, msg):
         if self.logFile:
             self.logFile.write(msg)

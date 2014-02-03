@@ -9,7 +9,6 @@ from explorer.ExplorerSMA import ExplorerSMA
 from explorer.ExplorerFrame import ExplorerFrame
 import logging as log
 
-
 log.basicConfig(level = log.DEBUG)
 
 if __name__ == '__main__':
@@ -29,7 +28,7 @@ if __name__ == '__main__':
                         help = "time in milliseconds between each cycle",
                         type = int)
     parser.add_argument("-n",
-                        "--nExplorers",
+                        "--explorers",
                         dest = "explorers",
                         help = "number of explorers",
                         default = 1,
@@ -39,6 +38,11 @@ if __name__ == '__main__':
                         dest = "cycles",
                         help = "number of cycles",
                         type = int)
+    parser.add_argument("-m",
+                        "--miner",
+                        help = "use a miner agent to build the maze",
+                        action = 'store_true',
+                        default = False)
     args = parser.parse_args()
 
     # hack here we consider that "rows" = the x size (e.i. the width)
@@ -47,10 +51,19 @@ if __name__ == '__main__':
     WIN_WIDTH, WIN_HEIGHT = GRID_ROWS * BOX_SIZE, GRID_COLS * BOX_SIZE
 
     sma = ExplorerSMA(GRID_COLS, GRID_ROWS)
-    sma.initWalls(3, 5, (GRID_COLS * GRID_ROWS) / 30)
-    sma.initExplorers(args.explorers)
-
     frame = ExplorerFrame(WIN_HEIGHT, WIN_WIDTH, BOX_SIZE, sma)
+
+    # Building agent
+    if args.miner:
+        sma.initBuilder(1, GRID_COLS * GRID_ROWS)
+        sma.explorers = args.explorers # kind of dirty shit, I really don't like
+
+    # Random of puzzle pieces
+    else:
+        sma.initWalls(3, 5, (GRID_COLS * GRID_ROWS) / 30)
+        sma.initExplorers(args.explorers)
+
+    # start main
     if args.cycles:
         frame.repeat(args.cycles, args.waiting_time_millis, sma.runOnce)
     else:
