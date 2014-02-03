@@ -12,9 +12,13 @@ from pacman.agents.PacmanAgent import PacmanAgent
 
 class PacmanSMA(SMA):
 
-    def __init__(self, cols, rows, logFilename = None):
+    def __init__(self, cols, rows, nbPhantom, logFilename = None):
         SMA.__init__(self, cols, rows, logFilename)
         self._initDijkstraGrid()
+        if nbPhantom < 0 and nbPhantom > 4:
+            pass
+        
+        self.nbPhantom = nbPhantom
     '''
     Place walls into the grid
     '''
@@ -70,6 +74,6 @@ class PacmanSMA(SMA):
         self.addAgent(PacmanAgent(x, y, self))
 
     def initGhosts(self):
-        for i in xrange(4):
+        for i in xrange(self.nbPhantom):
             x, y = self.env.randomEmptyPosition()
             self.addAgent(GhostAgent(x, y, self, i))

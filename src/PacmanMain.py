@@ -28,6 +28,13 @@ if __name__ == '__main__':
     parser.add_argument(dest = "waiting_time_millis",
                         help = "time in milliseconds between each cycle",
                         type = int)
+    parser.add_argument("-p",
+                        "--phantom",
+                        dest = "phantom",
+                        help = "number of phantom, [1..4] ",
+                        choices=[1, 2, 3, 4],
+                        type = int,
+                        default = 4)
     parser.add_argument("-c",
                         "--cycles",
                         dest = "cycles",
@@ -40,7 +47,7 @@ if __name__ == '__main__':
     BOX_SIZE = args.grid_box_size
     WIN_WIDTH, WIN_HEIGHT = GRID_ROWS * BOX_SIZE, GRID_COLS * BOX_SIZE
 
-    sma = PacmanSMA(GRID_COLS, GRID_ROWS)
+    sma = PacmanSMA(GRID_COLS, GRID_ROWS, nbPhantom = args.phantom)
     sma.initWalls()
     sma.initPacman()
     sma.initGhosts()

@@ -61,7 +61,6 @@ class GhostAgent(AgentMovable):
         '''
         neighboursResult = [neighboursSMA[0]]
         for x in range(1,3):
-            print(x)
             if x >= len(neighboursSMA):
                 break
             
