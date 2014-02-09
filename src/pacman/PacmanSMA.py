@@ -20,7 +20,7 @@ class PacmanSMA(MazeSMA):
         self.addAgent(PacmanAgent(x, y, self))
 
     def initGhosts(self, nGhosts = 4):
-        if nGhosts < 0 or nGhosts > 4:
+        if nGhosts < 1 or nGhosts > 4:
             raise "The number of ghosts should be include in [1, 4]"
 
         for i in xrange(nGhosts):
