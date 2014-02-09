@@ -40,6 +40,11 @@ if __name__ == '__main__':
                         dest = "cycles",
                         help = "number of cycles",
                         type = int)
+    parser.add_argument("-d",
+                        "--dijkstra",
+                        help = "display dijkstra grid",
+                        action = 'store_true',
+                        default = False)
     args = parser.parse_args()
 
     # hack here we consider that "rows" = the x size (e.i. the width)
@@ -52,7 +57,7 @@ if __name__ == '__main__':
     sma.initPacman()
     sma.initGhosts(args.phantom)
 
-    frame = PacmanFrame(WIN_HEIGHT, WIN_WIDTH, BOX_SIZE, sma)
+    frame = PacmanFrame(WIN_HEIGHT, WIN_WIDTH, BOX_SIZE, sma, dijkstra = args.dijkstra)
     if args.cycles:
         frame.repeat(args.cycles, args.waiting_time_millis, sma.runOnce)
     else:

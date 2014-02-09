@@ -38,6 +38,11 @@ if __name__ == '__main__':
                         dest = "cycles",
                         help = "number of cycles",
                         type = int)
+    parser.add_argument("-d",
+                        "--dijkstra",
+                        help = "display dijkstra grid",
+                        action = 'store_true',
+                        default = False)
     parser.add_argument("-m",
                         "--miner",
                         help = "use a miner agent to build the maze",
@@ -51,7 +56,7 @@ if __name__ == '__main__':
     WIN_WIDTH, WIN_HEIGHT = GRID_ROWS * BOX_SIZE, GRID_COLS * BOX_SIZE
 
     sma = ExplorerSMA(GRID_COLS, GRID_ROWS)
-    frame = ExplorerFrame(WIN_HEIGHT, WIN_WIDTH, BOX_SIZE, sma)
+    frame = ExplorerFrame(WIN_HEIGHT, WIN_WIDTH, BOX_SIZE, sma, dijkstra = args.dijkstra)
 
     # Building agent
     if args.miner:

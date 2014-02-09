@@ -13,10 +13,11 @@ from gui.FrameWall import FrameWall
 
 class ExplorerFrame(FrameWall):
 
-    def __init__(self, height, width, box_size, sma):
+    def __init__(self, height, width, box_size, sma, dijkstra = False):
         FrameWall.__init__(self, height, width, box_size, title = 'Explorer', bg = 'black')
 
         self.sma = sma
+        self.dijkstra = dijkstra
 
     def _drawExplorer(self, x, y, color):
         self.canvas.create_rectangle(x, \
@@ -47,7 +48,9 @@ class ExplorerFrame(FrameWall):
                 element = grid[x][y]
                 if isinstance(element, ExplorerAgent):
                     self._drawExplorer(x * self.BOX_SIZE, y * self.BOX_SIZE, element.color)
-                    self._drawDijkstraGrid(element.dijkstraGrid)
+
+                    if self.dijkstra:
+                        self._drawDijkstraGrid(element.dijkstraGrid)
 
                 elif isinstance(element, AgentWall):
                     self._drawWall(x * self.BOX_SIZE, y * self.BOX_SIZE, color = 'brown')

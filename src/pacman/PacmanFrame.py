@@ -15,7 +15,7 @@ from pacman.agents.PacmanAgent import PacmanAgent
 
 class PacmanFrame(FrameWall):
 
-    def __init__(self, height, width, box_size, sma):
+    def __init__(self, height, width, box_size, sma, dijkstra = False):
         FrameWall.__init__(self, height, width, box_size, title = 'Pacman', bg = 'black')
 
         image = Image.open("../resources/pacman.png")
@@ -40,6 +40,7 @@ class PacmanFrame(FrameWall):
         self.IMG_GHOSTS.append(ImageTk.PhotoImage(image))
 
         self.sma = sma
+        self.dijkstra = dijkstra
 
     def _drawPacman(self, x, y):
         self.drawTkImage(x, y, self.IMG_PACMAN)
@@ -70,7 +71,7 @@ class PacmanFrame(FrameWall):
                 elif isinstance(element, PacmanAgent):
                     self._drawPacman(x * self.BOX_SIZE, y * self.BOX_SIZE)
 
-                else:
+                elif self.dijkstra:
                     self.drawText(x * self.BOX_SIZE, y * self.BOX_SIZE, self.sma.dijkstraGrid[x][y], 'white')
 
         self.canvas.update_idletasks()
