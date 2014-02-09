@@ -7,7 +7,6 @@ import random
 
 from core.agents.AgentMovable import AgentMovable
 from core.agents.AgentWall import AgentWall
-import logging as log
 
 class BuilderAgent(AgentMovable):
 
