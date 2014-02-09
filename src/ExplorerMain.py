@@ -56,7 +56,10 @@ if __name__ == '__main__':
     # Building agent
     if args.miner:
         sma.initBuilder(1, GRID_COLS * GRID_ROWS)
-        sma.explorers = args.explorers # kind of dirty shit, I really don't like
+        # this variable is used by the BuilderAgent
+        # to initialize the explorers.
+        # Pretty dirty but functional
+        sma.explorers = args.explorers
 
     # Random of puzzle pieces
     else:
