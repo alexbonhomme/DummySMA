@@ -31,8 +31,8 @@ class AgentDijkstra(AgentBase):
         self.dijkstraGrid[self.x][self.y] = 0
         listNeighbours = self._fillNeighbours(self.x, self.y, 1)
 
-        for position in listNeighbours:
-            positionChild = self._fillNeighbours(position[0], position[1], position[2])
+        for x, y, value in listNeighbours:
+            positionChild = self._fillNeighbours(x, y, value)
             listNeighbours.extend(positionChild)
 
     '''
