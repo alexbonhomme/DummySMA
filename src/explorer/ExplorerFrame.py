@@ -5,11 +5,11 @@ Created on 28 janv. 2014
 '''
 from Tkinter import ALL
 
-from gui.FrameTk import FrameTk
-from explorer.agents.ExplorerAgent import ExplorerAgent
 from core.agents.AgentWall import AgentWall
-import logging as log
 from explorer.agents.BuilderAgent import BuilderAgent
+from explorer.agents.ExplorerAgent import ExplorerAgent
+from gui.FrameTk import FrameTk
+
 
 class ExplorerFrame(FrameTk):
 
