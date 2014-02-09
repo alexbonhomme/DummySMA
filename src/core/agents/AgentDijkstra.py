@@ -4,6 +4,7 @@ Created on 2 fevr. 2014
 @author: Alexandre Bonhomme
 '''
 from core.agents.AgentBase import AgentBase
+from core.agents.AgentWall import AgentWall
 
 
 class AgentDijkstra(AgentBase):
@@ -51,6 +52,9 @@ class AgentDijkstra(AgentBase):
 
         for x in xrange(rmin, rmax + 1):
             for y in xrange(cmin, cmax + 1):
+                if isinstance(self.sma.env.grid[x][y], AgentWall):
+                    continue
+
                 if self.dijkstraGrid[x][y] == None:
                     self.dijkstraGrid[x][y] = value
                     neighboursChange.append((x, y, value + 1))
