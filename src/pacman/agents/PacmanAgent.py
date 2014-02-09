@@ -12,4 +12,4 @@ class PacmanAgent(AgentMovable):
 
     def action(self):
         self.randomMoveInNeighborhood()
-        self.sma.computeDijkstraGrid(self.x, self.y)
+        self.sma._computeDijkstraGrid(self.x, self.y)

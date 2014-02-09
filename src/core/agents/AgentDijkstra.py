@@ -27,7 +27,7 @@ class AgentDijkstra(AgentBase):
     '''
     Compute the Dijkstra around the current position
     '''
-    def computeDijkstraGrid(self):
+    def _computeDijkstraGrid(self):
         self._initDijkstraGrid()
         self.dijkstraGrid[self.x][self.y] = 0
         listNeighbours = self._fillNeighbours(self.x, self.y, 1)

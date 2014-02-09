@@ -36,7 +36,7 @@ class PacmanSMA(MazeSMA):
     '''
     Compute the Dijkstra grid around the given position
     '''
-    def computeDijkstraGrid(self, x, y):
+    def _computeDijkstraGrid(self, x, y):
         self._initDijkstraGrid()
         self.dijkstraGrid[x][y] = 0
         listNeighbours = self._fillNeighbours(x, y, 1)

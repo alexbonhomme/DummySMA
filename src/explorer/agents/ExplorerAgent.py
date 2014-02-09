@@ -19,7 +19,7 @@ class ExplorerAgent(AgentMovable, AgentDijkstra):
 
     def action(self):
         # compute the Dijkstra's grid
-        unknownCells = self.computeDijkstraGrid()
+        unknownCells = self._computeDijkstraGrid()
         if not unknownCells:
             log.info('I finished my exploration !')
             return
@@ -39,7 +39,7 @@ class ExplorerAgent(AgentMovable, AgentDijkstra):
     Override from AgentDijkstra
     Stop compute when the cell is unknown or when this is wall
     '''
-    def computeDijkstraGrid(self):
+    def _computeDijkstraGrid(self):
         self._initDijkstraGrid()
         self.dijkstraGrid[self.x][self.y] = 0
         listNeighbours = self._fillNeighbours(self.x, self.y, 1)
