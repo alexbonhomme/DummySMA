@@ -24,12 +24,14 @@ class ExplorerAgent(AgentMovable, AgentDijkstra):
             log.info('I finished my exploration !')
             return
 
+        # Looking for the closest unknown cell
         minVal = unknownCells[0][2]
         nextX, nextY = unknownCells[0][0], unknownCells[0][1]
         for x, y, value in unknownCells:
             if value < minVal:
                 nextX, nextY = x, y
 
+        # Visit the cell
         self.moveTo(nextX, nextY)
         self.map[nextX][nextY] = True # Cell visited
 
