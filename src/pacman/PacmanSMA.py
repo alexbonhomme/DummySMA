@@ -7,6 +7,7 @@ Created on 28 janv. 2014
 from core.MazeSMA import MazeSMA
 from pacman.agents.GhostAgent import GhostAgent
 from pacman.agents.PacmanAgent import PacmanAgent
+from core.agents.AgentWall import AgentWall
 
 
 class PacmanSMA(MazeSMA):
@@ -61,6 +62,9 @@ class PacmanSMA(MazeSMA):
 
         for x in xrange(rmin, rmax + 1):
             for y in xrange(cmin, cmax + 1):
+                if isinstance(self.env.grid[x][y], AgentWall):
+                    continue
+
                 if self.dijkstraGrid[x][y] == None:
                     self.dijkstraGrid[x][y] = value
                     neighboursChange.append((x, y, value + 1))
