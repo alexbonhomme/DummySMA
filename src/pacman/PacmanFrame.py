@@ -8,15 +8,15 @@ from Tkinter import ALL
 from PIL import ImageTk, Image
 
 from core.agents.AgentWall import AgentWall
-from gui.FrameTk import FrameTk
+from gui.FrameWall import FrameWall
 from pacman.agents.GhostAgent import GhostAgent
 from pacman.agents.PacmanAgent import PacmanAgent
 
 
-class PacmanFrame(FrameTk):
+class PacmanFrame(FrameWall):
 
     def __init__(self, height, width, box_size, sma):
-        FrameTk.__init__(self, height, width, box_size, title = 'Pacman', bg = 'black')
+        FrameWall.__init__(self, height, width, box_size, title = 'Pacman', bg = 'black')
 
         image = Image.open("../resources/pacman.png")
         image = image.resize((self.BOX_SIZE, self.BOX_SIZE), Image.ANTIALIAS)
@@ -50,13 +50,6 @@ class PacmanFrame(FrameTk):
 
         self.drawTkImage(x, y, self.IMG_GHOSTS[ident])
 
-    def drawWall(self, x, y, color = 'purple'):
-        self.canvas.create_rectangle(x, \
-                                     y, \
-                                     x + self.BOX_SIZE, \
-                                     y + self.BOX_SIZE, \
-                                     fill = color)
-
     def _draw(self):
         title = "Pacman - Tick " + str(self.sma.ticksCounter)
         self.main.wm_title(title)
@@ -69,7 +62,7 @@ class PacmanFrame(FrameTk):
             for y in xrange(0, cols):
                 element = grid[x][y]
                 if isinstance(element, AgentWall):
-                    self.drawWall(x * self.BOX_SIZE, y * self.BOX_SIZE)
+                    self.drawWall(x * self.BOX_SIZE, y * self.BOX_SIZE, color = 'purple')
 
                 elif isinstance(element, GhostAgent):
                     self.drawGhost(x * self.BOX_SIZE, y * self.BOX_SIZE, element.id)

@@ -8,24 +8,17 @@ from Tkinter import ALL
 from core.agents.AgentWall import AgentWall
 from explorer.agents.BuilderAgent import BuilderAgent
 from explorer.agents.ExplorerAgent import ExplorerAgent
-from gui.FrameTk import FrameTk
+from gui.FrameWall import FrameWall
 
 
-class ExplorerFrame(FrameTk):
+class ExplorerFrame(FrameWall):
 
     def __init__(self, height, width, box_size, sma):
-        FrameTk.__init__(self, height, width, box_size, title = 'Explorer', bg = 'black')
+        FrameWall.__init__(self, height, width, box_size, title = 'Explorer', bg = 'black')
 
         self.sma = sma
 
     def drawExplorer(self, x, y, color):
-        self.canvas.create_rectangle(x, \
-                                     y, \
-                                     x + self.BOX_SIZE, \
-                                     y + self.BOX_SIZE, \
-                                     fill = color)
-
-    def drawWall(self, x, y, color = 'brown'):
         self.canvas.create_rectangle(x, \
                                      y, \
                                      x + self.BOX_SIZE, \
@@ -57,7 +50,7 @@ class ExplorerFrame(FrameTk):
                     self.drawDijkstraGrid(element.dijkstraGrid)
 
                 elif isinstance(element, AgentWall):
-                    self.drawWall(x * self.BOX_SIZE, y * self.BOX_SIZE)
+                    self.drawWall(x * self.BOX_SIZE, y * self.BOX_SIZE, color = 'brown')
 
                 elif isinstance(element, BuilderAgent):
                     self.drawExplorer(x * self.BOX_SIZE, y * self.BOX_SIZE, 'white')
