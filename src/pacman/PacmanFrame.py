@@ -41,10 +41,10 @@ class PacmanFrame(FrameWall):
 
         self.sma = sma
 
-    def drawPacman(self, x, y):
+    def _drawPacman(self, x, y):
         self.drawTkImage(x, y, self.IMG_PACMAN)
 
-    def drawGhost(self, x, y, ident):
+    def _drawGhost(self, x, y, ident):
         if ident < 0 or ident >= 4:
             raise ValueError("ident should be >= 0 and < 4")
 
@@ -62,13 +62,13 @@ class PacmanFrame(FrameWall):
             for y in xrange(0, cols):
                 element = grid[x][y]
                 if isinstance(element, AgentWall):
-                    self.drawWall(x * self.BOX_SIZE, y * self.BOX_SIZE, color = 'purple')
+                    self._drawWall(x * self.BOX_SIZE, y * self.BOX_SIZE, color = 'purple')
 
                 elif isinstance(element, GhostAgent):
-                    self.drawGhost(x * self.BOX_SIZE, y * self.BOX_SIZE, element.id)
+                    self._drawGhost(x * self.BOX_SIZE, y * self.BOX_SIZE, element.id)
 
                 elif isinstance(element, PacmanAgent):
-                    self.drawPacman(x * self.BOX_SIZE, y * self.BOX_SIZE)
+                    self._drawPacman(x * self.BOX_SIZE, y * self.BOX_SIZE)
 
                 else:
                     self.drawText(x * self.BOX_SIZE, y * self.BOX_SIZE, self.sma.dijkstraGrid[x][y], 'white')

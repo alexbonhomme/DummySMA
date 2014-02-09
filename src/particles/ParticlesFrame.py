@@ -25,7 +25,7 @@ class ExplorerFrame(FrameTk):
                                 width = 0, \
                                 fill = color)
 
-    def drawWall(self, x, y, color = 'Black'):
+    def _drawWall(self, x, y, color = 'Black'):
         self.canvas.create_rectangle(x, \
                                      y, \
                                      x + self.BOX_SIZE, \
@@ -47,6 +47,6 @@ class ExplorerFrame(FrameTk):
                 if isinstance(element, ParticleAgent):
                     self.drawParticle(x * self.BOX_SIZE, y * self.BOX_SIZE, element.color)
                 elif isinstance(element, AgentWall):
-                    self.drawWall(x * self.BOX_SIZE, y * self.BOX_SIZE)
+                    self._drawWall(x * self.BOX_SIZE, y * self.BOX_SIZE)
 
         self.canvas.update_idletasks()

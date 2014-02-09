@@ -18,14 +18,14 @@ class ExplorerFrame(FrameWall):
 
         self.sma = sma
 
-    def drawExplorer(self, x, y, color):
+    def _drawExplorer(self, x, y, color):
         self.canvas.create_rectangle(x, \
                                      y, \
                                      x + self.BOX_SIZE, \
                                      y + self.BOX_SIZE, \
                                      fill = color)
 
-    def drawDijkstraGrid(self, grid):
+    def _drawDijkstraGrid(self, grid):
         rows, cols = self.sma.env.rows, self.sma.env.cols
         for x in xrange(0, rows):
             for y in xrange(0, cols):
@@ -46,13 +46,13 @@ class ExplorerFrame(FrameWall):
             for y in xrange(0, cols):
                 element = grid[x][y]
                 if isinstance(element, ExplorerAgent):
-                    self.drawExplorer(x * self.BOX_SIZE, y * self.BOX_SIZE, element.color)
-                    self.drawDijkstraGrid(element.dijkstraGrid)
+                    self._drawExplorer(x * self.BOX_SIZE, y * self.BOX_SIZE, element.color)
+                    self._drawDijkstraGrid(element.dijkstraGrid)
 
                 elif isinstance(element, AgentWall):
-                    self.drawWall(x * self.BOX_SIZE, y * self.BOX_SIZE, color = 'brown')
+                    self._drawWall(x * self.BOX_SIZE, y * self.BOX_SIZE, color = 'brown')
 
                 elif isinstance(element, BuilderAgent):
-                    self.drawExplorer(x * self.BOX_SIZE, y * self.BOX_SIZE, 'white')
+                    self._drawExplorer(x * self.BOX_SIZE, y * self.BOX_SIZE, 'white')
 
         self.canvas.update_idletasks()

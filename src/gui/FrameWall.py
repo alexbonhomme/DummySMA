@@ -11,7 +11,7 @@ class FrameWall(FrameTk):
     def __init__(self, height, width, box_size, title = "Wall", bg = None):
         FrameTk.__init__(self, height, width, box_size, title, bg)
 
-    def drawWall(self, x, y, color):
+    def _drawWall(self, x, y, color):
         self.canvas.create_rectangle(x, \
                                      y, \
                                      x + self.BOX_SIZE, \
