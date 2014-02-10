@@ -12,9 +12,12 @@ from core.agents.AgentWall import AgentWall
 
 class PacmanSMA(MazeSMA):
 
-    def __init__(self, cols, rows, logFilename = None):
+    def __init__(self, cols, rows, stopEat, logFilename = None):
         MazeSMA.__init__(self, cols, rows, logFilename)
+        self.dijkstraGrid = None
         self._initDijkstraGrid()
+        self.stopEat = stopEat
+        self.stop = False
 
     def initPacman(self):
         x, y = self.env.randomEmptyPosition()

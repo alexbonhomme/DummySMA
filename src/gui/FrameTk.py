@@ -22,6 +22,9 @@ class FrameTk(object):
 
     def repeat(self, end, timeMillis, callback):
         def _repeat(end, time, func):
+            if self.sma.stop:
+                return            
+            
             if end > 0:
                 end -= 1
                 self.repeat(end, time, func)
@@ -32,6 +35,9 @@ class FrameTk(object):
 
     def after(self, timeMillis, callback):
         def _callback(time, func):
+            if self.sma.stop:
+                return
+            
             self.after(time, func)
             func()
             self._draw()

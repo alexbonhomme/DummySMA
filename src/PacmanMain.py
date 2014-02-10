@@ -35,6 +35,11 @@ if __name__ == '__main__':
                         choices = [1, 2, 3, 4],
                         type = int,
                         default = 4)
+    parser.add_argument("-s",
+                        "--stop",
+                        dest = "stopEat",
+                        help = "stop when phantom eat Pacman",
+                        default = False)
     parser.add_argument("-c",
                         "--cycles",
                         dest = "cycles",
@@ -52,7 +57,7 @@ if __name__ == '__main__':
     BOX_SIZE = args.grid_box_size
     WIN_WIDTH, WIN_HEIGHT = GRID_ROWS * BOX_SIZE, GRID_COLS * BOX_SIZE
 
-    sma = PacmanSMA(GRID_COLS, GRID_ROWS)
+    sma = PacmanSMA(GRID_COLS, GRID_ROWS, stopEat = args.stopEat)
     sma.initWalls(3, 5, (GRID_COLS * GRID_ROWS) / 30)
     sma.initPacman()
     sma.initGhosts(args.phantom)

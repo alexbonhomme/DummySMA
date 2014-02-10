@@ -22,7 +22,7 @@ class GhostAgent(AgentMovable):
         
         position = self.bestMove()
         if not position:
-            log.warn('Phantom stuck! or ever on the best place x: %d y: %d', self.x, self.y)
+            log.debug('Phantom ever on the best place x: %d y: %d', self.x, self.y)
             return
         
         x, y = position
@@ -32,8 +32,14 @@ class GhostAgent(AgentMovable):
         neighboursAgents = self.sma.env.neighboursAgentsOf(self.x, self.y)
         for neighbour in neighboursAgents:
             if isinstance(neighbour, PacmanAgent):
+                self.stop()
                 return True
+            
         return False
+    
+    def stop(self):
+        if self.sma.stopEat:
+            self.sma.stop = True 
 
         '''
         Return neighbour position that have the smallest value (dijkstra)
