@@ -32,7 +32,8 @@ class GhostAgent(AgentMovable):
         neighboursAgents = self.sma.env.neighboursAgentsOf(self.x, self.y)
         for neighbour in neighboursAgents:
             if isinstance(neighbour, PacmanAgent):
-                self.sma.stopExec()
+                if self.sma.stopEat:
+                    self.sma.stopExec()
                 return True
 
         return False
