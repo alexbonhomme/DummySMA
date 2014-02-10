@@ -20,6 +20,7 @@ class SMA(object):
             self.logFile = open(logFilename, 'w')
 
         self.env = Environnement(cols, rows, toric)
+        self.stop = False
 
     '''
     Add an agent and update the grid
@@ -61,6 +62,12 @@ class SMA(object):
         shuffle(self.agentsList)
         map(lambda agent: agent.action(), self.agentsList)
         self.ticksCounter += 1
+
+    '''
+    Stop the execution
+    '''
+    def stopExec(self):
+        self.stop = True
 
     '''
     Logging functions

@@ -16,8 +16,6 @@ class PacmanSMA(MazeSMA):
         MazeSMA.__init__(self, cols, rows, logFilename)
         self.dijkstraGrid = None
         self._initDijkstraGrid()
-        self.stopEat = stopEat
-        self.stop = False
 
     def initPacman(self):
         x, y = self.env.randomEmptyPosition()
